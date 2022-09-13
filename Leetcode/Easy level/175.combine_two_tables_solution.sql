@@ -64,4 +64,6 @@ addressId = 1 contains information about the address of personId = 2.
 
 -- Solution : 
 
-Select firstName, lastName, city, state from Address ;
+select p.firstName, p.lastName, a.city, a.state
+from person p left join address a 
+on p.personid = a.personid;
