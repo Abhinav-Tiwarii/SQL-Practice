@@ -1,0 +1,37 @@
+
+---Salaries Differences---
+
+Write a query that calculates the difference between the highest salaries found in the marketing and engineering departments. Output just the absolute difference in salaries.
+
+db_employee
+id: int
+first_name: varchar
+last_name: varchar
+salary: int
+department_id: int
+
+db_dept
+id: int
+department: varchar
+
+---Solution---
+
+with cte as 
+(
+select d.id,d.department, max(e.salary) as max_mar_sal from db_employee e 
+join db_dept d 
+on e.department_id = d.id
+group by d.id,d.department
+having d.department = 'marketing')
+,
+
+cte2 as
+(
+select d.id,d.department, max(e.salary) as max_eng_sal from db_employee e 
+join db_dept d 
+on e.department_id = d.id
+group by d.id,d.department
+having d.department = 'engineering')
+
+select (cte.max_mar_sal - cte2.max_eng_sal ) as salary_difference
+from cte2, cte;
