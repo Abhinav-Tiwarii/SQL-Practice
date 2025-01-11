@@ -1,5 +1,5 @@
 --SQL LinkedIn Practice
-
+/*
 create or replace table playbook_users(
 user_id int primary key,
 created_at datetime, 
@@ -43,7 +43,7 @@ users in descending order.
 
 select * from playbook_events;
 select * from playbook_users;
-
+*/
 -------------
 select pu.language
 ,count(distinct(case when pe.device in ('MacBook-Pro', 'iPhone 5s', 'iPad-air') then (pe.user_id) else NULL end)) 
