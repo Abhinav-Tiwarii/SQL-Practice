@@ -20,7 +20,7 @@ The output should contain the week number of that Friday and average amount spen
 
 select weekofyear(date) as Week_Number, avg(amount_spent) as avg_amt_spent
 from user_purchases
-where dayofweek(date)= 5
+where dayofweek(date)= 5 and quarter(date) = 1
 group by Week_Number;
 
 --Output--
